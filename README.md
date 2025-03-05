@@ -1,6 +1,6 @@
 # Pharmaceutical Cancer Treatment Analysis
 
-![Laboratory Research](https://img.freepik.com/free-photo/scientist-working-laboratory-with-test-tubes-laboratory-equipment_1303-20861.jpg)
+![Laboratory Research](images/laboratory_research.jpg)
 
 ## Project Overview
 
