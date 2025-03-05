@@ -1,4 +1,4 @@
-# Medical Cancer Treatment-Analytics 
+# Cancer and Medical Treatment-Analytics 
 
 ![Laboratory Research](images/laboratory_research.jpg)
 
