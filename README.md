@@ -1,4 +1,4 @@
-# Pharmaceutical Cancer Treatment Analysis
+# Medical Cancer Treatment-Analytics 
 
 ![Laboratory Research](images/laboratory_research.jpg)
 
