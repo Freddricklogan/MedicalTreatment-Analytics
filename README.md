@@ -1,6 +1,6 @@
 # Pymaceuticals Cancer Treatment Study
 
-![Tumor Response](images/tumor_response.png)
+<img src="images/laboratoryresearch.jpg" alt="Portfolio Overview" width="60%">
 
 ## Overview
 This data analysis project examines the effectiveness of different drug regimens on tumor growth in mice. The study focuses on squamous cell carcinoma (SCC) tumor growth across 249 mice treated with various drug regimens over a 45-day period.
