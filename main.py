@@ -380,7 +380,7 @@ def create_box_plots(quartile_data, final_timepoint_data, output_dir):
                            fontsize=8, color="red",
                            bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="red", alpha=0.7))
     
-plt.tight_layout()
+    plt.tight_layout()
     plt.savefig(os.path.join(output_dir, "final_tumor_volume_boxplot.png"))
     plt.close()
     
