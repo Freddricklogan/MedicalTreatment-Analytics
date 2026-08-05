@@ -1,5 +1,8 @@
 # Pymaceuticals Cancer Treatment Study
 
+**[Live demo / docs](https://freddricklogan.github.io/medicaltreatment-analytics/)** &nbsp;|&nbsp; [Portfolio](https://fredlogan.phd) &nbsp;|&nbsp; [All Projects](https://freddricklogan.github.io/projects/)
+
+
 <img src="images/laboratoryresearch.jpg" alt="Portfolio Overview" width="60%">
 
 ## Overview
