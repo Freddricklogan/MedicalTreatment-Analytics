@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Pymaceuticals — mouse study analysis with ANOVA and survival</title>
+<meta name="description" content="Analysis of the Pymaceuticals mouse study: cleaned merge, per-regimen statistics, IQR outliers, weight-volume regression, one-way ANOVA with Tukey HSD, Kaplan-Meier time in study with log-rank tests; generated in CI. By Freddrick Logan.">
+<meta name="author" content="Freddrick Logan">
+<link rel="canonical" href="$pages">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1220'/%3E%3Cpath d='M12 6h8v7l5 11a2 2 0 0 1-2 3H9a2 2 0 0 1-2-3l5-11z' fill='none' stroke='%2358a6ff' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M10 20h12' stroke='%233fb950' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="src/exec-shell.css">
+<link rel="stylesheet" href="src/report.css">
+<script type="application/json" id="report-data">$report_json</script>
+</head>
+<body>
+<main id="demo-root" class="exec-main">
+  <h2 class="sr-only">Study report</h2>
+  <p class="pm-note"><strong>Data:</strong> $source. After the merge, $mice mice and $rows observations remain; mice with duplicated timepoints were removed: $dropped. Every figure on this page was computed by <code>pymaceuticals report</code> in the CI run that published it. The study is a teaching dataset; nothing here is a clinical finding.</p>
+
+  <section class="pm-panel" id="s-summary" aria-labelledby="h-summary">
+    <h3 id="h-summary">1. Tumour volume by regimen, over the whole study</h3>
+    <p class="pm-lead">Mean tumour volume across all observations runs from <strong>$lowest_mean mm³</strong> ($lowest) to <strong>$highest_mean mm³</strong> ($highest). These are descriptive; the tests are in section 3.</p>
+    <div class="pm-scroll">$summary_table</div>
+  </section>
+
+  <section class="pm-panel" id="s-final" aria-labelledby="h-final">
+    <h3 id="h-final">2. Final tumour volume for four regimens</h3>
+    <p class="pm-lead">Each mouse's last recorded volume. Boxes are the interquartile range, whiskers 1.5 × IQR, points beyond them outliers by that rule: $outliers.</p>
+    <div class="pm-grid">
+      <div>$box_chart</div>
+      <div><div class="pm-scroll">$quartile_table</div></div>
+    </div>
+  </section>
+
+  <section class="pm-panel" id="s-tests" aria-labelledby="h-tests">
+    <h3 id="h-tests">3. Do the four regimens differ, and which pairs</h3>
+    <p class="pm-lead">One-way ANOVA on final tumour volume across Capomulin, Ramicane, Infubinol and Ceftamin: F = <strong>$anova_f</strong>, p $anova_p. Tukey HSD then asks which pairs differ at the 5 % level, with p-values adjusted for the six comparisons.</p>
+    <div class="pm-scroll">$tukey</div>
+    <h4>Weight and tumour volume within Capomulin</h4>
+    <p class="pm-lead">Average tumour volume per mouse against its weight ($reg_n mice): r = <strong>$reg_r</strong> (r² $reg_r2, p $reg_p, slope $reg_slope mm³ per gram). In this dataset there is no evidence of a relationship; the earlier README's "strong positive correlation (0.84)" was not computed from these files.</p>
+  </section>
+
+  <section class="pm-panel" id="s-survival" aria-labelledby="h-survival">
+    <h3 id="h-survival">4. Time in study</h3>
+    <p class="pm-lead">Kaplan-Meier curves over each mouse's last timepoint. A mouse whose record ends before day 45 counts as an event (it left the study); mice observed at day 45 are censored. The log-rank test compares each regimen with placebo.</p>
+    <div class="pm-grid">
+      <div>$km_chart</div>
+      <div><div class="pm-scroll">$survival_table</div></div>
+    </div>
+  </section>
+
+  <p class="pm-note">Raw numbers: <a href="report.json">report.json</a>.</p>
+</main>
+<script type="module" src="src/report.js"></script>
+</body>
+</html>
