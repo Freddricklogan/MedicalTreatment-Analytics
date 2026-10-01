@@ -334,6 +334,7 @@ def write_report(
     (out / "src").mkdir(exist_ok=True)
     shutil.copy(SHELL_DIR / "exec-shell.css", out / "src" / "exec-shell.css")
     shutil.copy(SHELL_DIR / "exec-shell.js", out / "src" / "exec-shell.js")
+    shutil.copy(SHELL_DIR / "tour-place.js", out / "src" / "tour-place.js")
     shutil.copy(PKG / "report.js", out / "src" / "report.js")
     shutil.copy(TEMPLATES / "report.css", out / "src" / "report.css")
     (out / "index.html").write_text(render_html(r, pages), encoding="utf-8")

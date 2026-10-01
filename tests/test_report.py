@@ -9,6 +9,9 @@ DATA = Path(__file__).resolve().parents[1] / "data"
 def test_write_report(tmp_path: Path) -> None:
     out = write_report(tmp_path / "dist", DATA / "Mouse_metadata.csv", DATA / "Study_results.csv")
     assert out.exists()
+    # the shell and its tour module ship with the report
+    for name in ("exec-shell.js", "exec-shell.css", "tour-place.js"):
+        assert (tmp_path / "dist" / "src" / name).exists(), name
     page = out.read_text(encoding="utf-8")
     assert "Content-Security-Policy" in page and "onclick" not in page and "style=" not in page
     assert "$" not in page.replace("$pages", "")

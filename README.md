@@ -36,7 +36,7 @@ report's.
   Kaplan–Meier estimation with censoring, log-rank tests.
 - **Data Engineering** — validated merge, documented duplicate rule,
   final-timepoint selection, vendored data with provenance.
-- **Engineering Practice** — typed package with a CLI, 9 tests at
+- **Engineering Practice** — typed package with a CLI, 10 tests at
   100 % statement coverage with hand-computed checks, ruff / mypy
   strict / bandit / pip-audit / Trivy, report generated and deployed by
   CI.
@@ -48,7 +48,7 @@ flowchart LR
   subgraph TB0["Trust Boundary: CI runner (GitHub Actions)"]
     META[("data/Mouse_metadata.csv<br/>250 mice")]:::data
     RES[("data/Study_results.csv<br/>1,721 observations")]:::data
-    subgraph PKG["pymaceuticals (9 tests, 100% stmts)"]
+    subgraph PKG["pymaceuticals (10 tests, 100% stmts)"]
       D["data.py<br/>load · validate · drop duplicates · final timepoint"]:::service
       S["stats.py<br/>summary · quartiles · regression · ANOVA + Tukey · Kaplan-Meier · log-rank"]:::service
       R["report.py<br/>tables · SVG box and KM charts · report.json"]:::service
